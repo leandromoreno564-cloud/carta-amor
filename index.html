@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💌 Mi Carta de Amor</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- ========== CORAZONES FLOTANTES ========== -->
+  <div class="floating-hearts" id="floatingHearts"></div>
+
+  <!-- ========== CONTENEDOR PRINCIPAL ========== -->
+  <div class="app-wrapper">
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="header-deco">❧</div>
+      <h1 class="titulo-principal">Mi Carta de Amor</h1>
+      <p class="subtitulo">Personaliza cada detalle con todo tu corazón</p>
+      <div class="header-deco">❧</div>
+    </header>
+
+    <!-- ========== PESTAÑAS ========== -->
+    <nav class="pestanas-nav">
+      <button class="tab-btn active" data-tab="portada">
+        <span class="tab-icon">💌</span> Portada
+      </button>
+      <button class="tab-btn" data-tab="mensaje">
+        <span class="tab-icon">✍️</span> Mensaje
+      </button>
+      <button class="tab-btn" data-tab="frases">
+        <span class="tab-icon">💬</span> Frases
+      </button>
+      <button class="tab-btn" data-tab="fotos">
+        <span class="tab-icon">📸</span> Fotos
+      </button>
+      <button class="tab-btn" data-tab="musica">
+        <span class="tab-icon">🎵</span> Música
+      </button>
+      <button class="tab-btn" data-tab="preview">
+        <span class="tab-icon">👁️</span> Vista Previa
+      </button>
+      <button class="tab-btn tab-btn-compartir" data-tab="compartir">
+        <span class="tab-icon">🔗</span> Compartir
+      </button>
+    </nav>
+
+    <!-- ========== CONTENIDO DE PESTAÑAS ========== -->
+    <main class="contenido">
+
+      <!-- ===== PESTAÑA: PORTADA ===== -->
+      <section class="tab-content active" id="tab-portada">
+        <div class="seccion-card">
+          <h2 class="card-titulo">✨ Datos de la Carta</h2>
+
+          <div class="form-grupo">
+            <label>Para quién va dirigida:</label>
+            <input type="text" id="para" class="input-elegante" placeholder="Ej: Mi amor, María, Corazón..."/>
+          </div>
+
+          <div class="form-grupo">
+            <label>De parte de:</label>
+            <input type="text" id="de" class="input-elegante" placeholder="Tu nombre o apodo"/>
+          </div>
+
+          <div class="form-grupo">
+            <label>Fecha especial:</label>
+            <input type="date" id="fecha" class="input-elegante"/>
+          </div>
+
+          <div class="form-grupo">
+            <label>Tema de color:</label>
+            <div class="temas-grid">
+              <button class="tema-btn active" data-tema="rosa" style="--c:#c94070">🌹 Rosa</button>
+              <button class="tema-btn" data-tema="lila" style="--c:#8e44ad">💜 Lila</button>
+              <button class="tema-btn" data-tema="azul" style="--c:#2471a3">💙 Azul</button>
+              <button class="tema-btn" data-tema="dorado" style="--c:#b7950b">✨ Dorado</button>
+              <button class="tema-btn" data-tema="verde" style="--c:#1e8449">💚 Verde</button>
+              <button class="tema-btn" data-tema="rojo" style="--c:#c0392b">❤️ Rojo</button>
+            </div>
+          </div>
+
+          <div class="form-grupo">
+            <label>Imagen de portada:</label>
+            <div class="upload-zone" id="uploadPortada" onclick="document.getElementById('inputPortada').click()">
+              <input type="file" id="inputPortada" accept="image/*" hidden/>
+              <div class="upload-placeholder" id="placeholderPortada">
+                <span class="upload-icon">🖼️</span>
+                <p>Haz clic para subir imagen de portada</p>
+                <small>JPG, PNG, GIF · Máx. 5MB</small>
+              </div>
+              <img id="previewPortada" class="upload-preview" style="display:none"/>
+            </div>
+            <button class="btn-quitar" id="quitarPortada" style="display:none" onclick="quitarImagen('Portada')">🗑️ Quitar imagen</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PESTAÑA: MENSAJE ===== -->
+      <section class="tab-content" id="tab-mensaje">
+        <div class="seccion-card">
+          <h2 class="card-titulo">✍️ Tu Mensaje Principal</h2>
+
+          <div class="form-grupo">
+            <label>Saludo:</label>
+            <input type="text" id="saludo" class="input-elegante" placeholder="Ej: Mi amor eterno, Mi vida, Querida..."/>
+          </div>
+
+          <div class="form-grupo">
+            <label>Cuerpo del mensaje:</label>
+            <div class="toolbar-texto">
+              <button class="tool-btn" onclick="formatText('bold')" title="Negrita"><b>B</b></button>
+              <button class="tool-btn" onclick="formatText('italic')" title="Cursiva"><i>I</i></button>
+              <button class="tool-btn" onclick="insertEmoji('❤️')">❤️</button>
+              <button class="tool-btn" onclick="insertEmoji('🌹')">🌹</button>
+              <button class="tool-btn" onclick="insertEmoji('💕')">💕</button>
+              <button class="tool-btn" onclick="insertEmoji('✨')">✨</button>
+              <button class="tool-btn" onclick="insertEmoji('🦋')">🦋</button>
+              <button class="tool-btn" onclick="insertEmoji('🌙')">🌙</button>
+              <button class="tool-btn" onclick="insertEmoji('⭐')">⭐</button>
+              <button class="tool-btn" onclick="insertEmoji('💫')">💫</button>
+            </div>
+            <div class="editor-texto" id="editorMensaje" contenteditable="true" 
+              data-placeholder="Escribe aquí tu mensaje desde el corazón...&#10;&#10;Cuéntale lo que sientes, lo que te gusta de esa persona, un recuerdo especial, tus promesas...">
+            </div>
+          </div>
+
+          <div class="form-grupo">
+            <label>Despedida / Firma:</label>
+            <input type="text" id="firma" class="input-elegante" placeholder="Ej: Con todo mi amor, Para siempre tuyo/a, Tu corazón..."/>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PESTAÑA: FRASES ===== -->
+      <section class="tab-content" id="tab-frases">
+        <div class="seccion-card">
+          <h2 class="card-titulo">💬 Frases Especiales</h2>
+          <p class="card-desc">Agrega citas, poemas o frases que signifiquen algo para ustedes.</p>
+
+          <div class="frases-lista" id="frasesLista">
+            <!-- Se generan dinámicamente -->
+          </div>
+
+          <button class="btn-agregar" onclick="agregarFrase()">
+            + Agregar nueva frase
+          </button>
+
+          <div class="separador">— o usa frases sugeridas —</div>
+
+          <div class="frases-sugeridas">
+            <p class="sugeridas-titulo">📚 Frases románticas sugeridas:</p>
+            <div class="sugeridas-grid">
+              <div class="sugerida-item" onclick="usarFraseSugerida(this)">
+                "Te quiero no solo por quien eres, sino por quien soy yo cuando estoy contigo."
+              </div>
+              <div class="sugerida-item" onclick="usarFraseSugerida(this)">
+                "En un mundo lleno de personas, mis ojos siempre te buscarán a ti."
+              </div>
+              <div class="sugerida-item" onclick="usarFraseSugerida(this)">
+                "Eres mi lugar favorito del mundo entero."
+              </div>
+              <div class="sugerida-item" onclick="usarFraseSugerida(this)">
+                "Contigo aprendí que el amor no duele, el amor sana."
+              </div>
+              <div class="sugerida-item" onclick="usarFraseSugerida(this)">
+                "Si me preguntaran qué es la felicidad, te señalaría a ti."
+              </div>
+              <div class="sugerida-item" onclick="usarFraseSugerida(this)">
+                "Cada momento a tu lado es el que más quiero recordar."
+              </div>
+              <div class="sugerida-item" onclick="usarFraseSugerida(this)">
+                "Eres el sueño del que no quiero despertar."
+              </div>
+              <div class="sugerida-item" onclick="usarFraseSugerida(this)">
+                "Mi corazón habla un idioma que solo tú entiendes."
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PESTAÑA: FOTOS ===== -->
+      <section class="tab-content" id="tab-fotos">
+        <div class="seccion-card">
+          <h2 class="card-titulo">📸 Galería de Recuerdos</h2>
+          <p class="card-desc">Sube fotos de momentos especiales que quieras incluir en tu carta.</p>
+
+          <div class="upload-multiple" id="uploadMultiple" onclick="document.getElementById('inputFotos').click()">
+            <input type="file" id="inputFotos" accept="image/*" multiple hidden onchange="agregarFotos(event)"/>
+            <span class="upload-icon">📷</span>
+            <p>Haz clic para agregar fotos</p>
+            <small>Puedes seleccionar varias a la vez</small>
+          </div>
+
+          <div class="galeria-grid" id="galeriaGrid">
+            <!-- Fotos se agregan aquí -->
+          </div>
+
+          <div class="form-grupo" style="margin-top:20px">
+            <label>Pie de galería (opcional):</label>
+            <input type="text" id="pieGaleria" class="input-elegante" placeholder="Ej: Nuestros momentos favoritos 💕"/>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PESTAÑA: MÚSICA ===== -->
+      <section class="tab-content" id="tab-musica">
+        <div class="seccion-card">
+          <h2 class="card-titulo">🎵 Nuestra Canción</h2>
+          <p class="card-desc">Agrega el enlace de YouTube de una canción especial para acompañar la carta.</p>
+
+          <div class="form-grupo">
+            <label>🔗 Link de YouTube:</label>
+            <input type="text" id="youtubeLink" class="input-elegante" 
+              placeholder="https://www.youtube.com/watch?v=..." 
+              oninput="previewYoutube()"/>
+          </div>
+
+          <div id="youtubePreview" class="youtube-preview" style="display:none">
+            <iframe id="youtubeFrame" width="100%" height="200" frameborder="0" allowfullscreen
+              allow="autoplay; encrypted-media"></iframe>
+          </div>
+
+          <div class="form-grupo">
+            <label>💿 Nombre de la canción:</label>
+            <input type="text" id="nombreCancion" class="input-elegante" placeholder="Ej: Perfect - Ed Sheeran"/>
+          </div>
+
+          <div class="form-grupo">
+            <label>🎤 ¿Por qué es especial esta canción?</label>
+            <textarea id="porqueCancion" class="input-elegante textarea-pequeño" 
+              placeholder="Ej: Esta canción sonaba cuando nos conocimos..."></textarea>
+          </div>
+
+          <div class="separador">— o elige del estilo de música —</div>
+          <div class="form-grupo">
+            <label>🎭 Estilo de decoración musical:</label>
+            <div class="temas-grid">
+              <button class="tema-btn" data-musica="romantico">🎻 Romántico</button>
+              <button class="tema-btn" data-musica="pop">🎤 Pop</button>
+              <button class="tema-btn" data-musica="clasico">🎹 Clásico</button>
+              <button class="tema-btn" data-musica="tropical">🎺 Tropical</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PESTAÑA: VISTA PREVIA ===== -->
+      <section class="tab-content" id="tab-preview">
+        <div class="preview-toolbar">
+          <button class="btn-accion" onclick="generarPreview()">🔄 Actualizar Vista</button>
+          <button class="btn-accion btn-imprimir" onclick="imprimirCarta()">🖨️ Imprimir / Guardar PDF</button>
+        </div>
+        <div class="carta-preview" id="cartaPreview">
+          <div class="preview-placeholder">
+            <p>👆 Haz clic en <strong>"Actualizar Vista"</strong> para ver tu carta</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== PESTAÑA: COMPARTIR ===== -->
+      <section class="tab-content" id="tab-compartir">
+        <div class="seccion-card">
+          <h2 class="card-titulo">🔗 Compartir tu Carta</h2>
+          <p class="card-desc">Genera un link único o un código QR para que tu persona especial pueda ver la carta desde cualquier dispositivo.</p>
+
+          <!-- AVISO FOTOS -->
+          <div class="aviso-fotos" id="avisoFotos" style="display:none">
+            ⚠️ <strong>Nota:</strong> Las fotos que subiste no se incluyen en el link (son muy pesadas). 
+            La carta compartida mostrará todo lo demás perfectamente. 
+            Para compartir con fotos, considera subir las imágenes a un servicio como <em>Imgur</em> y usar esas URLs en los pies de foto.
+          </div>
+
+          <div class="compartir-pasos">
+            <!-- PASO 1 -->
+            <div class="paso-card">
+              <div class="paso-numero">1</div>
+              <div class="paso-contenido">
+                <h3>Genera tu link</h3>
+                <p>Haz clic para crear el link con toda tu carta guardada dentro.</p>
+                <button class="btn-generar-link" onclick="generarLink()">
+                  ✨ Generar Link Mágico
+                </button>
+              </div>
+            </div>
+
+            <!-- RESULTADO LINK -->
+            <div id="resultadoLink" style="display:none">
+              <!-- PASO 2 -->
+              <div class="paso-card">
+                <div class="paso-numero">2</div>
+                <div class="paso-contenido">
+                  <h3>Copia y comparte el link</h3>
+                  <div class="link-box">
+                    <input type="text" id="linkGenerado" class="input-link" readonly/>
+                    <button class="btn-copiar" onclick="copiarLink()" id="btnCopiar">📋 Copiar</button>
+                  </div>
+                  <div class="share-btns">
+                    <button class="share-btn share-wa" onclick="compartirWhatsApp()">
+                      <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                      WhatsApp
+                    </button>
+                    <button class="share-btn share-email" onclick="compartirEmail()">
+                      📧 Email
+                    </button>
+                    <button class="share-btn share-copy" onclick="copiarLink()">
+                      🔗 Copiar Link
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PASO 3: QR -->
+              <div class="paso-card">
+                <div class="paso-numero">3</div>
+                <div class="paso-contenido">
+                  <h3>Código QR</h3>
+                  <p>Imprímelo o muéstralo en pantalla para que tu persona lo escanee.</p>
+                  <div class="qr-container">
+                    <div id="qrcode"></div>
+                    <div class="qr-acciones">
+                      <button class="btn-accion-qr" onclick="descargarQR()">⬇️ Descargar QR</button>
+                      <button class="btn-accion-qr" onclick="window.print()">🖨️ Imprimir QR</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TARJETA DE PRESENTACIÓN -->
+              <div class="paso-card">
+                <div class="paso-numero">💡</div>
+                <div class="paso-contenido">
+                  <h3>Tip: Carta física + QR</h3>
+                  <p>Imprime el QR y pégalo en una tarjeta física escrita a mano. ¡Tu persona escaneará el QR y verá la versión digital completa con fotos y música!</p>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /compartir-pasos -->
+
+        </div><!-- /seccion-card -->
+
+        <!-- VISTA PREVIA CARTA COMPARTIDA (cuando se abre por link) -->
+        <div id="vistaCompartida" style="display:none">
+          <div class="carta-preview" id="cartaCompartida"></div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- QR Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
